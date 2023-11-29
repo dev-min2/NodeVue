@@ -1,13 +1,15 @@
 const mysql = require('mysql');
 const sql = require('./db/sql.js');
+require('dotenv').config({ path : './db/mysql.env' });
+
 
 const pool = mysql.createPool( {
-    connectionLimit : 10,
-    host : '127.0.0.1',
-    port : 3306,
-    user : 'dev',
-    password : '1234',
-    database : 'dev'
+    connectionLimit : process.env.MYSQL_LIMIT,
+    host : process.env.MYSQL_HOST,
+    port : process.env.MYSQL_PORT,
+    user : process.env.USER,
+    password : process.env.PASSWORD,
+    database : process.env.DATABASE
 });
 
 //pool.query('sql문', '값', (err, results) => {
@@ -35,5 +37,5 @@ async function test() {
 test();
 
 module.exports = {
-    
+
 }
