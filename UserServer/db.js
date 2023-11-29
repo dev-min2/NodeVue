@@ -11,10 +11,6 @@ const pool = mysql.createPool( {
     database : process.env.MYSQL_DATABASE
 });
 
-//pool.query('sql문', '값', (err, results) => {
-//  
-//});
-
 const query = (alias, values) => {
     return new Promise((resolve, reject) => {
         pool.query(sql[alias], values, (err, results) => {
