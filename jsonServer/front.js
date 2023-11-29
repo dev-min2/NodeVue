@@ -24,7 +24,7 @@ fetch('http://localhost:3000/posts/1')
 // .then(resolve => resolve.json())
 // .then(result => console.log('insertData', result));
 
-//수정s
+//수정s testset
 // fetch('http://localhost:3000/posts/4', {
 //     method: 'put',
 //     headers : {
