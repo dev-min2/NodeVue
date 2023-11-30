@@ -6,6 +6,7 @@ const app = new express();
 
 const db = require('./db');
 
+
 app.use(express.json());
 
 app.listen(4500, () => {
