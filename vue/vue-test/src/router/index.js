@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DataBinding from '../views/DataBinding.vue'
+import myProduct from '../views/ListBinding.vue'
+import ifTest from '../views/IF.vue'
+import onEvent from '../views/OnEvent.vue'
+import option from '../views/computedWatch.vue'
 
 const routes = [
   {
@@ -16,6 +20,26 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     //component: () => import(/* webpackChunkName: "about" */ '../views/A.vue')
     component : DataBinding
+  },
+  {
+    path : '/product',
+    name : myProduct,
+    component : myProduct
+  },
+  {
+    path : '/ifTest',
+    name : ifTest,
+    component : ifTest
+  },
+  {
+    path : '/onEvent',
+    name : onEvent,
+    component : onEvent
+  },
+  {
+    path : '/option',
+    name : option,
+    component : option
   }
 
 ]

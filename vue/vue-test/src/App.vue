@@ -2,7 +2,11 @@
   <VueComponent />
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/binding">binding</router-link>
+    <router-link to="/binding">binding</router-link> |
+    <router-link to="/product">product</router-link> |
+    <router-link to="/ifTest">ifTest</router-link> |
+    <router-link to="/onEvent">onEvent</router-link> |
+    <router-link to="/option">option</router-link>    
   </nav>
   <router-view/>
 </template>
