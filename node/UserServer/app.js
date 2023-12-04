@@ -24,6 +24,7 @@ app.get('/user/:userNo', async (req, res) => {
     
     let data = await db.query('userQuery',userNo);
     console.log(data);
+    // js+mysql select는 pk조건 쿼리도 배열로 반환되기에 
     res.send(data[0]);
 })
 
