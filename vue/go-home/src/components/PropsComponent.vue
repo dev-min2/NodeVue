@@ -1,4 +1,4 @@
-!<template>
+<template>
     <div>
         <PageTitle v-bind:title="myMsg"/>
         <!-- <PageContent v-bind:title="header" :count="10" :writer="['Adward']" :regdate="'2023-12-05'" 
@@ -49,6 +49,7 @@
                 this.$refs.child.plusCount();
 
                 // 자식의 refs 객체를 가져와서 cbtn에 졉근.
+                // refs는 컴포넌트별로 들고있음.
                 this.$refs.child.$refs.cBtn.click();
             }
         }
