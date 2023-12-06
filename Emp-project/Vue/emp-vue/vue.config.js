@@ -1,5 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
-const target = 'http://localhost:4500'
+const target = 'http://localhost:6895'
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false,
@@ -16,6 +16,5 @@ module.exports = defineConfig({
       }
     }
   }
+
 })
-// 12-06
-// npm run build

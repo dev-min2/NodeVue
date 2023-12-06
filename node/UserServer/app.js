@@ -9,17 +9,24 @@ const db = require('./db');
 
 app.use(express.json());
 
+app.use(express.static('dist'));
+
 app.listen(4500, () => {
     console.log('server start');
 })
 
-app.get('/user', async (req, res) => {
+// index.html파일을 보냄
+app.get('/', async (req, res) => {
+    res.sendFile('/dist/index.html');
+})
+
+app.get('/api/user', async (req, res) => {
     let data = await db.query('userListQuery');
     console.log(data);
     res.send(data);
 })
 
-app.get('/user/:userNo', async (req, res) => {
+app.get('/api/user/:userNo', async (req, res) => {
     let userNo = req.params.userNo;
     
     let data = await db.query('userQuery',userNo);
@@ -28,14 +35,14 @@ app.get('/user/:userNo', async (req, res) => {
     res.send(data[0]);
 })
 
-app.post('/user', async(req, res) => {
+app.post('/api/user', async(req, res) => {
     let data = req.body;
     
     let ret = await db.query('userInsertQuery',data);
     res.send(ret);
 })
 
-app.put('/user/:userNo', async(req, res) => {
+app.put('/api/user/:userNo', async(req, res) => {
     let dbData = [req.body, req.params.userNo]
     console.log(dbData);
 
@@ -43,7 +50,7 @@ app.put('/user/:userNo', async(req, res) => {
     res.send(data);
 })
 
-app.delete('/user/:userNo', async(req, res) => {
+app.delete('/api/user/:userNo', async(req, res) => {
     let userNo = req.params.userNo;
 
     let data = await db.query('userDeleteQuery', userNo);

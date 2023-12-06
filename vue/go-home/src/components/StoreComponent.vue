@@ -61,7 +61,7 @@
                     product_name : '',
                     category : ''
                 };
-                this.$store.commit('addProduct', cloneObj);
+                this.$store.dispatch('addProduct', cloneObj);
             }
         }
     }
