@@ -5,8 +5,8 @@ const app = new express();
 
 console.log(process.env.MYSQL_LIMIT);
 
-const employeeDAO = require('./db/DAO/employeeDAO');
-const myDto = require('./PageDTO');
+//const employeeDAO = require('./db/DAO/employeeDAO');
+const EmpService = require('./Service/EmpService');
 
 app.use(express.json({
     limit: '50mb'
@@ -20,22 +20,12 @@ app.listen(6895, () => {
 // app.get('/', async (req, res) => {
 //     res.sendFile('/dist/index.html');
 // })
-
 app.get('/emp', async (req, res) => {
     let pageNo = req.query.pageNo;
     
     try {
-        let empList = await employeeDAO.selectAllQuery(pageNo);
-        let allAmount = await employeeDAO.selectEmployeeCount();
-
-        console.log(allAmount[0].EMP_CNT);
-        let dto = new myDto.PageDTO(allAmount[0].EMP_CNT, pageNo, 10);
-
-        let resultData = {
-            empList,
-            dto
-        }
-        
+        const empService = new EmpService();
+        let resultData = await empService.getAllEmpList(pageNo);
         res.send(resultData);
     }
     catch(e) {
@@ -43,39 +33,25 @@ app.get('/emp', async (req, res) => {
     }
 })
 
+
 app.get('/emp/:empNo', async (req, res) => {
     let empNo = req.params.empNo;
     
-    let data = await employeeDAO.selectQuery(empNo);
-    console.log(data);
-    // js+mysql select는 pk조건 쿼리도 배열로 반환되기에 
-    res.send(data[0]);
+    const empService = new EmpService();
+    let data = await empService.getEmpInfo(empNo);
+    res.send(data);
 })
 
 app.post('/emp', async(req, res) => {
     const employees = req.body.employees;
     const deptEmp = req.body.deptEmp;
     const salaryies = req.body.salaries;
-
-    console.log(employees);
-    console.log(deptEmp);
-    console.log(salaryies);
-
-    deptEmp.TO_DATE = '9999-01-01';
-    salaryies.TO_DATE = '9999-01-01';
     
     try {
-        let employeeRet = await employeeDAO.insertQuery(employees);
-        let deptEmpRet = await employeeDAO.insertDeptEmpQuery(deptEmp);
-        let salaryiesRet = await employeeDAO.insertSalaryiesQuery(salaryies);
+        const empService = new EmpService();
+        let result = await empService.saveEmp(employees, deptEmp, salaryies);
 
-        const returnVal = {
-            employeeRet,
-            deptEmpRet,
-            salaryiesRet
-        }
-        let data = JSON.stringify(returnVal);
-        res.send(data);
+        res.send(result);
     }
     catch(e) {
         console.log(e);
@@ -87,7 +63,8 @@ app.put('/emp/:empNo', async(req, res) => {
     console.log(dbData);
 
     try {
-        let data = await employeeDAO.updateEmployeeQuery(dbData);
+        const empService = new EmpService();
+        let data = await empService.modifyEmpInfo(dbData);
         res.send(data);
     }
     catch(error) {
@@ -99,7 +76,8 @@ app.delete('/emp/:empNo', async(req, res) => {
     let empNo = req.params.empNo;
 
     try {
-        let data = await employeeDAO.deleteEmployeeQuery(empNo);
+        const empService = new EmpService();
+        let data = await empService.deleteEmpInfo(empNo);
         res.send(data);
     }
     catch(e) {
