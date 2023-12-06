@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EmpListView from '../views/EmpListView.vue'
 import EmpInsertView from '../views/EmpInsertView.vue'
+import EmpView from '../views/EmpView.vue'
+import EmpUpdateView from '../views/EmpUpdateView.vue'
 
 const routes = [
   {
@@ -12,6 +14,16 @@ const routes = [
     path : '/empInsertForm',
     name : 'empInsertForm',
     component : EmpInsertView
+  },
+  {
+    path : '/empView',
+    name : 'empView',
+    component : EmpView
+  },
+  {
+    path : "/empUpdate",
+    name : 'empUpdate',
+    component : EmpUpdateView
   }
 ]
 

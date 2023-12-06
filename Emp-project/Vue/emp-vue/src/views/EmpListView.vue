@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 <tr :key="emp.EMP_NO" v-for="(emp) in empList"
-                    @click="getEmpInfo(emp.EMP_NO)">
+                    @click="goEmpView(emp.EMP_NO)">
                     <td>{{ emp.EMP_NO }}</td>
                     <td>{{ emp.FIRST_NAME + ' ' + emp.LAST_NAME }}</td>
                     <td>{{ emp.GENDER }}</td>
@@ -92,8 +92,8 @@ export default {
         })
       }
     },
-    getEmpInfo() {
-
+    goEmpView(empNo) {
+      this.$router.push({ path : '/empView', query : { empNo : empNo } })
     },
     format(value) {
       let date = new Date(value);
