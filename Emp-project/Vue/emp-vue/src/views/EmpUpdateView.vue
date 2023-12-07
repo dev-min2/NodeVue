@@ -78,6 +78,8 @@
                              .replace('DD', (('0' + date.getDate()).slice(-2)));
             },
             async updateEmp() {
+                console.log('updateEmp');
+                console.log(this.empInfo);
                 let sendData = {
                     BIRTH_DATE : this.format(this.empInfo.BIRTH_DATE),
                     FIRST_NAME : this.empInfo.FIRST_NAME,
@@ -85,6 +87,9 @@
                     GENDER : this.empInfo.GENDER,
                     HIRE_DATE : this.format(this.empInfo.HIRE_DATE)
                 };
+                
+                console.log('updateEmp');
+                console.log(sendData);
 
                 let result = await axios.put('/api/emp/' + this.empInfo.EMP_NO,sendData, { 'Content-Type' : 'application/json'}).catch(err => console.log(err));
                 if(result.status == 200) {

@@ -1,6 +1,10 @@
 <template>
   <div class="container">
+        
         <table class="table">
+        <h2 v-show="empList.length <= 0">
+          {{waitMsg}}
+        </h2>
             <caption>Total : {{ totalCount }} </caption>
             <thead>
                 <tr>
@@ -66,7 +70,8 @@ export default {
   data() {
     return {
       empList : [],
-      pageDTO : {}
+      pageDTO : {},
+      waitMsg : '데이터 받아오는중'
     }
   },
   computed : {

@@ -64,8 +64,8 @@
                 }
             }
         },
-        created() {
-            this.getEmpInfo(this.$route.query.empNo);
+        async created() {
+            await this.getEmpInfo(this.$route.query.empNo);
         },
         methods : {
             async getEmpInfo(empNo) {
