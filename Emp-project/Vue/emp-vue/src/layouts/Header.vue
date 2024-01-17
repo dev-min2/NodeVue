@@ -8,8 +8,7 @@
 
       <ul class="nav nav-pills">
         <li class="nav-item mx-1"><router-link to="/" class="nav-link active" aria-current="page">전체조회</router-link></li>
-        <li class="nav-item mx-1"><router-link to="/empInsertForm" class="nav-link active" aria-current="page">사원등록</router-link></li>
-
+        <li class="nav-item mx-1"><router-link to="/empForm" class="nav-link active" aria-current="page">사원등록</router-link></li>
       </ul>
     </header>
   </div>

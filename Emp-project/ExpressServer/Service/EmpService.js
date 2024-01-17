@@ -59,8 +59,9 @@ class EmpService {
         let result = await employeeDAO.updateEmployeeQuery(dbData);
         return result;
     }
-    async deleteEmpInfo(empNo) {
-        await employeeDAO.deleteEmployeeQuery(empNo);
+    async deleteEmpInfo(data) {
+        let result = await employeeDAO.deleteEmployeeQuery(data);
+        return result;
     }
 }
 

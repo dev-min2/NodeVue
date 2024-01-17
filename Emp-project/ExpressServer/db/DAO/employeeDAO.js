@@ -63,14 +63,14 @@ let employeeDAO = {
 
         return this.query(updateQuery,data);
     },
-    deleteEmployeeQuery : async function(empNo) {
+    deleteEmployeeQuery : async function(data) {
         let deleteQuery = `
             UPDATE DEPT_EMP
-                SET TO_DATE = SYSDATE()
+                SET TO_DATE = ?
                 WHERE EMP_NO = ?
         `
 
-        return this.query(deleteQuery, empNo);
+        return this.query(deleteQuery, data);
     }
 };
 

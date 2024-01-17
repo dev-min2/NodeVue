@@ -99,7 +99,7 @@ export default {
         GENDER : this.empInfo.GENDER,
         HIRE_DATE : this.getToday()
       }
-
+      
       let deptEmp = {
         EMP_NO : this.empInfo.EMP_NO,
         DEPT_NO : this.mySelectItem,

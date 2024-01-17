@@ -3,6 +3,7 @@ import EmpListView from '../views/EmpListView.vue'
 import EmpInsertView from '../views/EmpInsertView.vue'
 import EmpView from '../views/EmpView.vue'
 import EmpUpdateView from '../views/EmpUpdateView.vue'
+import EmpForm from '../views/EmpFormView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path : "/empUpdate",
     name : 'empUpdate',
     component : EmpUpdateView
+  },
+  {
+    path : "/empForm",
+    name : 'empForm',
+    component : EmpForm
   }
 ]
 

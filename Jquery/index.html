@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한솥러버전민교</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .blue {
+            color:red;
+        }
+
+        .red {
+            color : orange;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>where do you want to go?</h1>
+        <h2>Travel Destinations</h2>
+        <p>Plan your next adventure.</p>
+        <ul id="destinations">
+            <li>Rome</li>
+            <li>Paris</li>
+            <li class="blue">Rio</li>
+        </ul>
+    </div>
+    <script>
+        //const result = $('#destinations').css('color','gray');
+
+        // selector : 탐색
+        // # : id속성
+        console.log($('#destinations'));
+        // . : class 속성
+        console.log($('.blue'));
+        // tagName
+        console.log($('h1'));
+        // [attribute]
+        console.log($('[name]'));
+        // 관계를 기반
+        console.log($('ul > li'));
+
+        /* 
+            매개변수없이 그냥 호출하는건 getter
+            innerHtml : html()
+            textContent : text()
+            class : addClass(), removeClass(), hasClass(), toggleClass() -> toggle은 on off,
+            value : val()
+            style : css()
+            기타 : prop() - DOM이 가진 노드가 property라는 노드를 들고있는데 그걸 제어, attr() 
+        */
+
+        let result = $('ul').html();
+        console.log(result);
+        result = $('ul').text();
+        console.log(result);
+        $('h1').text('Hello, jQuery!');
+        $('h2').css('background-color','green');
+        result = $('h2').css('color');
+        console.log(result);
+
+        $('p').attr('name', 'dumi');
+    </script>
+</body>
+</html>

@@ -74,6 +74,7 @@
                     this.empInfo = result.data;
                     this.empInfo.BIRTH_DATE = this.format(this.empInfo.BIRTH_DATE);
                     this.empInfo.HIRE_DATE = this.format(this.empInfo.HIRE_DATE);
+                    this.empInfo.GENDER = this.empInfo.GENDER == 'M' ? '남' : '여';
                 }
             },
             format(value) {
@@ -84,7 +85,9 @@
                              .replace('DD', (('0' + date.getDate()).slice(-2)));
             },
             async deleteUser() {
-                let result = await axios.delete('/api/emp/' + this.empInfo.EMP_NO).catch(err => console.log(err));
+                const value = prompt('퇴사날짜 입력');
+
+                let result = await axios.delete('/api/emp/' + this.empInfo.EMP_NO, { data : { to_date : value } },{ 'Content-Type' : 'application/json'}).catch(err => console.log(err));
                 if(result.status == 200) {
                     alert('삭제에 성공했음');
                     this.$router.push({path : '/'});

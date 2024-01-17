@@ -3,7 +3,7 @@ const empRouter = express.Router();
 
 empRouter.use(express.json({
     limit: '50mb'
-}));
+}))
 
 //const employeeDAO = require('./db/DAO/employeeDAO');
 const EmpService = require('../Service/EmpService');
@@ -65,10 +65,12 @@ empRouter.put('/:empNo', async(req, res) => {
 
 empRouter.delete('/:empNo', async(req, res) => {
     let empNo = req.params.empNo;
+    let date = req.body.to_date;
 
+    let dbData = [date,empNo];
     try {
         const empService = new EmpService();
-        let data = await empService.deleteEmpInfo(empNo);
+        let data = await empService.deleteEmpInfo(dbData);
         res.send(data);
     }
     catch(e) {

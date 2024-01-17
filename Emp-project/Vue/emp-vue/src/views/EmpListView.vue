@@ -27,7 +27,6 @@
                     <td>{{ emp.SALARY }}</td>
                     <td>{{ emp.DEPT_NO }}</td>
                     <td>{{ emp.DEPT_NAME }}</td>
-
                 </tr>
             </tbody>
         </table>
@@ -71,7 +70,7 @@ export default {
     return {
       empList : [],
       pageDTO : {},
-      waitMsg : '데이터 받아오는중'
+      waitMsg : '데이터 받아오는중😊'
     }
   },
   computed : {
@@ -94,6 +93,7 @@ export default {
         console.log(this.pageDTO);
         this.empList.forEach( obj => {
           obj.HIRE_DATE = this.format(obj.HIRE_DATE);
+          obj.GENDER = obj.GENDER == 'M' ? '남' : '여';
         })
       }
     },
@@ -119,6 +119,7 @@ export default {
         console.log(this.pageDTO);
         this.empList.forEach( obj => {
           obj.HIRE_DATE = this.format(obj.HIRE_DATE);
+          obj.GENDER = obj.GENDER == 'M' ? '남' : '여';
         })
       }    
     },
