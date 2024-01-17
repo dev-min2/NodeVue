@@ -156,14 +156,50 @@
         $('#list tbody').append(cloneTr);
         selectedTr.remove();
       });
+
       // select 태그에 change 이벤트
       $('select').on('change', function(event) {
         // trTag생성. 
         let trTag = $('<tr></tr>'); // 태그모양을 제이쿼리에 넘겨주면 태그를 생성함
         let tdTag = $('<td/>') // 이렇게 써도 태그생성함 -> <태그/>
+        let inputTag = $('<input type="checkbox"/>');
+
+        tdTag.append(inputTag);
+        trTag.append(tdTag);
+
+        tdTag = $('<td/>').text('003');
+        trTag.append(tdTag);
+        //////////////
+        tdTag = $('<td/>').text(event.currentTarget.value);
+        trTag.append(tdTag)
+
+        tdTag = $('<td/>').prop('name', 'id').text('user03');
+        trTag.append(tdTag);
+        tdTag = $('<td/>').append($('<input/>').attr('type','password').val(5555));
+        trTag.append(tdTag);
+
+        tdTag = $('<td><p>이한나</p></td>');
+        trTag.append(tdTag);
+
+        tdTag = $('<td/>').text('2024-01-01')
+        trTag.append(tdTag);
+
+        tdTag = $('<td/>');
+        let btnTag = $('<button/>').attr('type','button').text('Del');
+        tdTag.append(btnTag);
+        trTag.append(tdTag);
+
+        console.log(trTag);
+        $('#list tbody').append(trTag);
+
+        
       });
       // 전체 선택 시 이벤트 처리
-
+      $('#allChk').on('click', function(event) {
+        // input이 가진것중 checkbox가 가진것을 탐색한다는 의미
+        let result = event.currentTarget.checked;
+        $(':checkbox').prop('checked', result);
+      });
     </script> 
   </body>
 </html>
